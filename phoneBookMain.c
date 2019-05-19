@@ -1,67 +1,38 @@
-#include <stdio.h>
 #include "phone.h"
+#include "register.h"
+#include "print.h"
+#include "search.h"
+#include "delete.h"
+#include <stdio.h>
 
-void registerPhoneData();
-void printAll();
-void searchByName();
-void deleteByName();
+#ifdef DEBUG
+	struct contact book[MAX] = {
+		{"Test1", "010-1234-5678"},
+		{"Test2", "010-2345-6789"},
+		{"Test3", "010-2425-6343"}};
+    char password[255] = {"qwer1234"};
+	extern	int size = 3;
+#endif
 
-static int count_service = 0;	// Total number of service requests
 
+static int input = 0;
 
 int main()
 {
-	int service;		// a variable for storing user's request
-	do
+	while(input != 5)
 	{
-        printf("============ Telephone Book Management ============");
-        printf("\n <<<1. Register\t 2. Print All \t 3. Search by ID \t 4. Delete \t 5. Exit >>>\n");
-        printf(" Please enter your service number (1-5)> ");
-		scanf("%d", &service);
-
-		switch(service)
+		puts("====================Telephone Book Management====================");
+		puts("<<<1.Register\t2.Print All\t3.Search\t4.Delete\t5.Exit>>>");
+		printf("Please Enter your Service Number <1-5> : "); scanf("%d", &input);
+		switch (input)
 		{
-			case 1: registerPhoneData(); break;	// invoke find_ID
-			case 2: printAll(); break;
-            case 3: searchByName(); break;
-            case 4: deleteByName(); break;
+		case 1 : registerPhoneData(); break;
+		case 2 : printAll(); break;
+		case 3 : searchByName(); break;
+		case 4 : deleteByName(); break;
+		case 5 : return 0;
 		}
-	} while (service != 5);	// if Exit is not entered, the loop continues
+		printf("\n\n");
+	}
 	return 0;
-}
-
-/*****************
-** Your code..
-** This function should be implemented in register.c
-*************************/
-void registerPhoneData()
-{
-    printf("Registration\n");
-}
-
-/*****************
-** Your code..
-** This function should be implemented in search.c
-*************************/
-void printAll()
-{
-    printf("Print all contants in the PhoneBook\n");
-}
-
-/*****************
-** Your code..
-** This function should be implemented in search.c
-*************************/
-void searchByName()
-{
-    printf("Search by Name\n");
-}
-
-/*****************
-** Your code..
-** This function should be implemented in delete.c
-*************************/
-void deleteByName()
-{
-    printf("Deletion is done\n");
 }

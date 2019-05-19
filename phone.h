@@ -1,13 +1,17 @@
-// array of sturcure
+#ifndef PHONE_H
+#define PHONE_H
 
-# define MAX 50
+#include <stdio.h>
+#include <string.h>
 
-struct Contact
-{
-    char Name[10];
-    char PhoneNumber[13];
+#define MAX 50
+#define DEBUG
+
+extern char password[255];
+int size;
+
+struct contact {
+	char name[10];
+	char pNumber[13];
 };
-
-struct Contact PhoneBook[MAX];
-
-int size;  // store the actual numbers of PhoneBook
+#endif
